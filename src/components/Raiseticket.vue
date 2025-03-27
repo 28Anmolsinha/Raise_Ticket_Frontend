@@ -49,7 +49,6 @@ export default {
 
   methods: {
     getNextId() {
-    t
       let lastId = parseInt(localStorage.getItem("lastComplaintId")) || 0;
       let newId = lastId + 1;
       localStorage.setItem("lastComplaintId", newId); 
