@@ -23,7 +23,7 @@ export default {
   methods: {
     async fetchTopComplaints() {
       try {
-        const response = await axios.get("http://localhost:8080/api/complaints/top");
+        const response = await axios.get("http://localhost:8081/api/complaints/top");
         this.complaints = response.data;
       } catch (error) {
         console.error("Error fetching complaints:", error);
