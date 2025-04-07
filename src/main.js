@@ -1,13 +1,16 @@
-import './assets/main.css'
+import './assets/main.css';
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import log from './utils/logger.js'; 
 
-import { createApp } from 'vue'
+console.log("Logger initialized:", log);
 
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
 
-const app = createApp(App)
+app.use(router);
+app.config.globalProperties.$log = log; 
 
+app.mount("#app");
 
-app.use(router)
-
-app.mount('#app')
+log.info("Vue app initialized!"); 

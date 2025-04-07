@@ -5,6 +5,7 @@ WORKDIR /app
 
 
 COPY package*.json ./
+
 RUN npm install
 
 
@@ -23,7 +24,7 @@ RUN rm -rf ./*
 COPY --from=builder /app/dist .
 
 
-RUN sed -i 's/listen       80;/listen       5173;/' /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 
 EXPOSE 5173

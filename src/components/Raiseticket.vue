@@ -48,21 +48,28 @@ export default {
   },
 
   methods: {
-    getNextId() {
-      let lastId = parseInt(localStorage.getItem("lastComplaintId")) || 0;
-      let newId = lastId + 1;
-      localStorage.setItem("lastComplaintId", newId); 
-      return newId;
+    async fetchGeneratedId() {
+      try {
+        const res = await axios.get("http://10.200.208.98:32452/api/complaints/generate-id");
+        return res.data;
+      } catch (error) {
+        console.error("Error fetching ID:", error);
+        alert("Failed to generate ID.");
+        return null;
+      }
     },
 
     async submitForm() {
-      this.formData.id = this.getNextId(); 
+      const generatedId = await this.fetchGeneratedId();
+      if (!generatedId) return;
+
+      this.formData.id = generatedId;
 
       try {
-        const response = await axios.post("http://localhost:8080/api/complaints", this.formData);
+        const response = await axios.post("http://10.200.208.98:30433/api/complaints", this.formData);
         console.log("Response:", response.data);
         alert("Issue submitted successfully!");
-        this.formData = { id: 0, name: "", issueType: "", description: "" }; 
+        this.formData = { id: 0, name: "", issueType: "", description: "" };
       } catch (error) {
         console.error("Error submitting complaint:", error);
         alert("Failed to submit issue. Please try again.");

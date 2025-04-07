@@ -1,6 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import log from '@/utils/logger.js' 
 
+log.debug("Header component loaded");
+log.info("Navigation links are being rendered");
+
+const handleNavigation = (routeName) => {
+  log.info(`Navigated to ${routeName}`);
+};
 </script>
 
 <template>
@@ -11,14 +18,11 @@ import { RouterLink, RouterView } from 'vue-router'
       <HelloWorld msg="RAISE TICKET" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">Complaint</RouterLink>
-        <RouterLink to="/connect">Connect</RouterLink>
-        <RouterLink to="/Signup">User</RouterLink>
-        
-      
+        <RouterLink to="/" @click="handleNavigation('Home')">Home</RouterLink>
+        <RouterLink to="/about" @click="handleNavigation('Complaint')">Complaint</RouterLink>
+        <RouterLink to="/connect" @click="handleNavigation('Connect')">Connect</RouterLink>
+        <RouterLink to="/Signup" @click="handleNavigation('User')">User</RouterLink>
       </nav>
-      
     </div>
   </header>
 
@@ -82,7 +86,6 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }

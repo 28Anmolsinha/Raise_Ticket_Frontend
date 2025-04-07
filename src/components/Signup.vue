@@ -13,6 +13,7 @@
 
 <script>
 import axios from "axios";
+import log from "@/utils/logger.js";
 
 export default {
   data() {
@@ -22,17 +23,31 @@ export default {
   },
   methods: {
     async fetchTopComplaints() {
+      log.info("Initiating fetch for top complaints...");
+
       try {
-        const response = await axios.get("http://localhost:8081/api/complaints/top");
-        this.complaints = response.data;
+        const response = await axios.get("http://10.200.208.98:32452/api/complaints/top");
+
+        if (response.status === 200 && response.data.length > 0) {
+          this.complaints = response.data;
+          log.info("Successfully fetched top complaints.");
+          log.debug("Complaints data:", response.data);
+        } else {
+          this.complaints = [];
+          log.warn("No complaints found or unexpected response:", response.status);
+        }
       } catch (error) {
-        console.error("Error fetching complaints:", error);
+        log.error("Error fetching top complaints.", {
+          message: error.message,
+          response: error.response ? error.response.data : "No response from server",
+        });
       }
-    }
+    },
   },
   mounted() {
+    log.debug("NoticeBoard component mounted.");
     this.fetchTopComplaints();
-  }
+  },
 };
 </script>
 

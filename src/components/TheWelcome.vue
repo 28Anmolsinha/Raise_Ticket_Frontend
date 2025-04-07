@@ -29,7 +29,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
 
     If you are facing any of the Infrastructural issues , need not to worry now !!!. You are just a click away 
     from solving the problem. <br />
-    Refer to the <a href="about" >Raise Complaint section </a>and report your issue.
+    Refer to the <a href="/about" >Raise Complaint section </a>and report your issue.
 
 
   </WelcomeItem>
@@ -41,7 +41,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     <template #heading>Electricity and water supply problems</template>
     If you are facing regular Electricity and water supply problems , Just Relax !!.
     As you are just a step away to get rid of it. <br />
-    Refer to the <a href="about" >Raise Complaint section </a>and report your issue. 
+    Refer to the <a href="/about" >Raise Complaint section </a>and report your issue. 
   </WelcomeItem>
 
   <WelcomeItem>
@@ -51,7 +51,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     <template #heading>Legal and administrative grievances</template>
     Facing any Legal and administrative grievances, Time to get rid of it!!!.
     You are just a single step away to report your issue. <br />
-    Refer to the <a href="about" >Raise Complaint section </a>and report your issue.
+    Refer to the <a href="/about" >Raise Complaint section </a>and report your issue.
 
 
     
