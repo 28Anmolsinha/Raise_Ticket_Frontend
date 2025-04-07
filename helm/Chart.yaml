@@ -1,0 +1,6 @@
+apiVersion: v2
+name: vueapp
+description: A Helm chart for vueapp
+version: 0.1.0
+appVersion: "v3"
+

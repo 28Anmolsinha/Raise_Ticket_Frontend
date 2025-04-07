@@ -1,0 +1,9 @@
+image:
+  repository: anmolsinha28/vueapp
+  tag: v3
+
+service:
+  port: 5173
+  targetPort: 5173
+  nodePort: 31382
+
